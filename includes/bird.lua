@@ -26,7 +26,8 @@ function bird_flap()
     end
     bird.y-=bird.flap
     if bird.y>=120 then
-        bird.y=120
+        collision=true
+        state="game over"
     elseif bird.y<=0 then
         bird.y=0
     end

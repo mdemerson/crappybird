@@ -55,9 +55,9 @@ function u_score()
 end
 
 function draw_game_over()
-    rectfill(40,60,96,86,0)
-    print("game over!",50,63,7)
-    print("❎ to restart", 43,80,7)
+    rectfill(32,60,96,86,0)
+    print("game over!",47,63,7)
+    print("❎ to restart", 40,80,7)
 end
 
 function draw_menu()
