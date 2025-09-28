@@ -4,8 +4,8 @@ function init_bird()
     bird={
     x=35,
     y=63,
-    w=8,
-    h=8,
+    w=6,
+    h=6,
     flap_amount=6,
     flap=0,
     gravity=1,

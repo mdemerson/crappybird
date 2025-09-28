@@ -13,7 +13,16 @@ function update_game()
     bird_flap()
     update_pipes()
     u_score()
-    check_collision(bird, pipe)
+    -- check collision bottom pipe
+    if check_collision(bird.x, bird.y, bird.w, bird.h, pipe.x, pipe.y, pipe.w, 128-pipe.y) then
+        collision=true
+        state="game over"
+    end
+    -- check collision top pipe
+    if check_collision(bird.x, bird.y, bird.w, bird.h, pipe.x, 0, pipe.w, pipe.y) then
+        collision=true
+        state="game over"
+    end
 end
 
 -- draw everything
@@ -23,33 +32,16 @@ function draw_game()
     draw_pipes()
     draw_bird()
     print(score,63,8,7)
-    print(state)
-end
-
--- check collision
--- function check_collision()
---     if abs(bird.x-pipe.x) < 1 then
---         if bird.y>pipe.y then
---             collision=true
---             state="game over"
---         elseif bird.y<pipe.y-pipe.gap then
---             collision=true
---             state="game over"
---         end
---     else
---         collision=false
---     end
--- end
-
-function check_collision(sprite1, sprite2)
-  return (sprite1.x < sprite2.x + sprite2.w and
-          sprite1.x + sprite1.w > sprite2.x and
-          sprite1.y < sprite2.y + sprite2.h and
-          sprite1.y + sprite1.h > sprite2.y)
 end
 
 
-
+-- check collision AABB
+function check_collision(bird_x, bird_y, bird_w, bird_h, pipe_x, pipe_y, pipe_w, pipe_h)
+  return bird_x < pipe_x + pipe_w and
+         bird_x + bird_w > pipe_x and
+         bird_y < pipe_y + pipe_h and
+         bird_y + bird_h > pipe_y
+end
 
 -- scoring
 function init_u_score()
