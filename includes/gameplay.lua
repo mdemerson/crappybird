@@ -19,7 +19,7 @@ function update_game()
         state="game over"
     end
     -- check collision top pipe
-    if check_collision(bird.x, bird.y, bird.w, bird.h, pipe.x, 0, pipe.w, pipe.y) then
+    if check_collision(bird.x, bird.y, bird.w, bird.h, pipe.x, 0, pipe.w, pipe.y-pipe.gap) then
         collision=true
         state="game over"
     end
